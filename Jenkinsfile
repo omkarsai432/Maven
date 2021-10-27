@@ -1,11 +1,16 @@
 pipeline {
-  agent any
+  agent {
+    docker {
+      image 'java'
+    }
+
+  }
   stages {
     stage('Build') {
       parallel {
         stage('Build') {
           steps {
-            sh 'echo "Hello World"'
+            sh 'java -version'
           }
         }
 
