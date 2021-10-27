@@ -1,14 +1,15 @@
 pipeline {
-  agent {
-    docker {
-      image 'java'
-    }
-
-  }
+  agent any
   stages {
     stage('Build') {
       parallel {
         stage('Build') {
+          agent {
+            docker {
+              image 'java'
+            }
+
+          }
           steps {
             sh 'java -version'
           }
