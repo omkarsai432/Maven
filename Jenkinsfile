@@ -40,7 +40,7 @@ pipeline {
       steps {
         sh '''pwd
 ls
-which tomcat'''
+docker images'''
       }
     }
 
