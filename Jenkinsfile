@@ -34,6 +34,7 @@ pipeline {
       steps {
         sh '''pwd
 ls
+cat Jenkinsfile
 cd /home/ec2-user
 docker images
 docker ps 
