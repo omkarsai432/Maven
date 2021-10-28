@@ -35,6 +35,7 @@ pipeline {
         sh '''pwd
 ls
 cd /home/ec2-user
+ls
 '''
       }
     }
