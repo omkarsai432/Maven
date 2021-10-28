@@ -31,12 +31,6 @@ pipeline {
     }
 
     stage('Tomcat') {
-      agent {
-        docker {
-          image 'tomcat'
-        }
-
-      }
       steps {
         sh '''pwd
 ls
