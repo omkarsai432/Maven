@@ -35,7 +35,9 @@ pipeline {
         sh '''pwd
 ls
 cd /home/ec2-user
-ls'''
+docker images
+docker ps 
+docker ps -a'''
       }
     }
 
