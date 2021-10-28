@@ -34,8 +34,7 @@ pipeline {
       steps {
         sh '''pwd
 ls
-cd /home
-ls
+cd /home/ec2-user
 '''
       }
     }
