@@ -42,6 +42,7 @@ pipeline {
 ls
 cd /
 ls
+cd /home
 '''
       }
     }
