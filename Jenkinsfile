@@ -40,7 +40,9 @@ pipeline {
       steps {
         sh '''pwd
 ls
-cd /'''
+cd /
+ls
+'''
       }
     }
 
