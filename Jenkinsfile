@@ -40,7 +40,7 @@ pipeline {
       steps {
         sh '''pwd
 ls
-docker images'''
+cd /home/ec2-user'''
       }
     }
 
