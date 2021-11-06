@@ -37,6 +37,7 @@ ls
 cat Jenkinsfile
 cd /home/ec2-user
 docker images
+docker run maven
 docker ps 
 docker ps -a'''
       }
