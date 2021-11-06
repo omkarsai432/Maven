@@ -8,4 +8,4 @@ RUN mv apache-tomcat-8.5.72/* /opt/tomcat/
 RUN yum install -y java
 RUN java -version
 EXPOSE 8080
-CMD ["/opt/tomcat/bin/catalina.sh", "run”]
+CMD ["/opt/tomcat/bin/catalina.sh", "run"]
