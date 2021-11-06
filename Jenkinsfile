@@ -6,9 +6,9 @@ pipeline {
 
   }
   stages {
-    stage('Compile Stage') {
+    stage('Tomcat') {
       steps {
-        sh 'tomcat -version'
+        sh 'ls'
       }
     }
 
