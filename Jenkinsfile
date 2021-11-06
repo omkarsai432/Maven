@@ -1,10 +1,5 @@
 pipeline {
-  agent {
-    docker {
-      image 'tomcat'
-    }
-
-  }
+  agent none
   stages {
     stage('Tomcat') {
       steps {
