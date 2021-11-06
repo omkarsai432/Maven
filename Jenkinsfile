@@ -6,7 +6,7 @@ pipeline {
         sh '''ls
 docker build -t tomcat8 .
 docker images
-docker run -p 80:8080 tomcat8'''
+docker run -t -i -p 80:8080 tomcat8'''
       }
     }
 
