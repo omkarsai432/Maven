@@ -38,7 +38,7 @@ cat Jenkinsfile
 cd /home/ec2-user
 docker images
 docker ps 
-docker rm $(docker ps -a)'''
+'''
       }
     }
 
