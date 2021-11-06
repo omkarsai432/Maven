@@ -7,7 +7,7 @@ pipeline {
 systemctl start docker
 docker build -t tomcat8 .
 docker images
-docker run -t -i -p 80:8080 tomcat8'''
+docker run -i -p 80:8080 tomcat8'''
       }
     }
 
