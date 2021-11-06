@@ -1,49 +1,32 @@
 pipeline {
-  agent any
-  stages {
-    stage('Build') {
-      parallel {
-        stage('Build') {
-          agent {
-            docker {
-              image 'java'
-            }
+    agent any
 
-          }
-          steps {
-            sh 'java -version'
-          }
+    stages {
+        stage ('Compile Stage') {
+
+            steps {
+                withMaven(maven : 'maven_3_5_0') {
+                    sh 'mvn clean compile'
+                }
+            }
         }
 
-        stage('Test') {
-          agent {
-            docker {
-              image 'maven'
-            }
+        stage ('Testing Stage') {
 
-          }
-          steps {
-            sh 'mvn --version'
-          }
+            steps {
+                withMaven(maven : 'maven_3_5_0') {
+                    sh 'mvn test'
+                }
+            }
         }
 
-      }
-    }
 
-    stage('Tomcat') {
-      steps {
-        sh '''pwd
-ls
-cat Jenkinsfile
-cd /home/ec2-user
-docker images
-docker ps 
-'''
-      }
+        stage ('Deployment Stage') {
+            steps {
+                withMaven(maven : 'maven_3_5_0') {
+                    sh 'mvn deploy'
+                }
+            }
+        }
     }
-
-  }
-  environment {
-    stage = 'new'
-  }
 }
