@@ -2,14 +2,15 @@ pipeline {
   agent any
   stages {
     stage('Example Deploy') {
-            when {
-                branch 'production'
-                environment name: 'DEPLOY_TO', value: 'production'
-            }
-            steps {
-                echo 'Deploying'
-            }
-        }
+      when {
+        branch 'production'
+        environment name: 'DEPLOY_TO', value: 'production'
+      }
+      steps {
+        echo 'Deploying'
+      }
+    }
+
     stage('Example') {
       input {
         message 'Should we continue?'
