@@ -1,6 +1,5 @@
 pipeline {
     agent any
-    customWorkspace '/home/ec2-user/jenk/'
     stages {
         stage('Example') {
             steps {
