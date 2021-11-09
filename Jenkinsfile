@@ -16,6 +16,7 @@ pipeline {
   }
   post {
     cleanup {
+      cleanWs()
       echo 'I will always clean'
     }
 
