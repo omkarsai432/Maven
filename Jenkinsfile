@@ -10,6 +10,7 @@ pipeline {
       }
       when {
         beforeAgent true
+        beforeInput true
         branch 'maisf'
       }
       input {
