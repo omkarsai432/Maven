@@ -1,12 +1,24 @@
 pipeline {
-  agent any
+  agent {
+    docker {
+      image 'maven'
+    }
+
+  }
   stages {
     stage('Example Deploy') {
+      agent {
+        docker {
+          image 'maven'
+        }
+
+      }
       when {
         branch 'main'
       }
       steps {
         echo 'Master'
+        sh 'mvn -version'
       }
     }
 
