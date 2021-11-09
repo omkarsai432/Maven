@@ -10,7 +10,7 @@ pipeline {
       }
       when {
         beforeAgent true
-        branch 'master'
+        branch 'main'
       }
       steps {
         echo 'Master'
