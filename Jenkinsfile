@@ -1,65 +1,47 @@
 pipeline {
-  agent none
-  stages {
-    stage('Example Deploy') {
-      agent {
-        docker {
-          image 'maven'
+    agent none
+    stages {
+        stage('Non-Sequential Stage') {
+            agent {
+                label 'for-non-sequential'
+            }
+            steps {
+                echo "On Non-Sequential Stage"
+            }
         }
-
-      }
-      when {
-        beforeAgent true
-        beforeInput true
-        branch 'main'
-      }
-      input {
-        message 'Deploy to production?'
-        id 'simple-input'
-      }
-      steps {
-        echo 'Master'
-        sh 'mvn -version'
-      }
-    }
-
-    stage('Example') {
-      input {
-        message 'Should we continue?'
-        id 'Yes, we should.'
-        submitter 'alice,bob'
-        parameters {
-          string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+        stage('Sequential') {
+            agent {
+                label 'for-sequential'
+            }
+            environment {
+                FOR_SEQUENTIAL = "some-value"
+            }
+            stages {
+                stage('In Sequential 1') {
+                    steps {
+                        echo "In Sequential 1"
+                    }
+                }
+                stage('In Sequential 2') {
+                    steps {
+                        echo "In Sequential 2"
+                    }
+                }
+                stage('Parallel In Sequential') {
+                    parallel {
+                        stage('In Parallel 1') {
+                            steps {
+                                echo "In Parallel 1"
+                            }
+                        }
+                        stage('In Parallel 2') {
+                            steps {
+                                echo "In Parallel 2"
+                            }
+                        }
+                    }
+                }
+            }
         }
-      }
-      steps {
-        echo "Hello, ${PERSON}, nice to meet you."
-      }
     }
-
-    stage('Parameters') {
-      agent {
-        docker {
-          image 'java'
-        }
-
-      }
-      steps {
-        sh 'java -version'
-        echo "Hello ${params.PERSON}"
-        echo "Biography: ${params.BIOGRAPHY}"
-        echo "Toggle: ${params.TOGGLE}"
-        echo "Choice: ${params.CHOICE}"
-        echo "Password: ${params.PASSWORD}"
-      }
-    }
-
-  }
-  parameters {
-    string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
-    text(name: 'BIOGRAPHY', defaultValue: '', description: 'Enter some information about the person')
-    booleanParam(name: 'TOGGLE', defaultValue: true, description: 'Toggle this value')
-    choice(name: 'CHOICE', choices: ['One', 'Two', 'Three'], description: 'Pick something')
-    password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
-  }
 }
