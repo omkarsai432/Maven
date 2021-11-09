@@ -2,6 +2,7 @@ pipeline {
   agent {
     docker {
       image 'maven'
+      customWorkspace '/home/ec2-user/jenk/'
     }
 
   }
