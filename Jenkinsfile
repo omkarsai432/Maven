@@ -9,6 +9,7 @@ pipeline {
 
       }
       when {
+        beforeAgent true
         branch 'master'
       }
       steps {
