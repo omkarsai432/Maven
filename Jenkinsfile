@@ -15,6 +15,7 @@ pipeline {
       input {
                 message "Deploy to production?"
                 id "simple-input"
+            }
       steps {
         echo 'Master'
         sh 'mvn -version'
