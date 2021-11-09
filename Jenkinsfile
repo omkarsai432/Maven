@@ -2,7 +2,14 @@ pipeline {
   agent any
   stages {
     stage('Parameters') {
+      agent {
+        docker {
+          image 'java'
+        }
+
+      }
       steps {
+        sh 'java -version'
         echo "Hello ${params.PERSON}"
         echo "Biography: ${params.BIOGRAPHY}"
         echo "Toggle: ${params.TOGGLE}"
