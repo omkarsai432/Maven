@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Example Deploy') {
       when {
-        branch 'production'
+        branch 'master'
         environment name: 'DEPLOY_TO', value: 'production'
       }
       steps {
