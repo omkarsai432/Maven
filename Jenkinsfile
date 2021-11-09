@@ -10,7 +10,7 @@ pipeline {
       }
       when {
         beforeAgent true
-        branch 'main'
+        branch 'maisf'
       }
       input {
         message 'Deploy to production?'
