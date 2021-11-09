@@ -15,8 +15,8 @@ pipeline {
 
   }
   post {
-    always {
-      echo 'I will always say Hello again!'
+    cleanup {
+      echo 'I will always clean'
     }
 
   }
