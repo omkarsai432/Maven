@@ -7,9 +7,10 @@ pipeline {
 
   }
   stages {
-    stage('Example') {
+    stage('Tomcat') {
       steps {
-        echo 'Hello World'
+        sh '''docker build -t tomcat .
+docker run -d -p 80:8080 tomcat'''
       }
     }
 
