@@ -1,15 +1,14 @@
 pipeline {
   agent {
-    docker {
-      image 'maven'
+    dockerfile {
+      filename 'Dockerfile'
     }
 
   }
   stages {
     stage('Tomcat') {
       steps {
-        sh '''docker build -t tomcat .
-docker run -d -p 80:8080 tomcat'''
+        sh 'ls'
       }
     }
 
