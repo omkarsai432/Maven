@@ -8,7 +8,8 @@ pipeline {
   stages {
     stage('Tomcat') {
       steps {
-        sh 'docker run -d -p 80:8080 '
+        sh '''sudo systemctl start docker
+docker run -d -p 80:8080 '''
       }
     }
 
