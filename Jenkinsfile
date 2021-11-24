@@ -4,7 +4,7 @@ pipeline {
     stage('Tomcat') {
       steps {
         sh '''docker images
-docker ps'''
+docker run -p 5000:8080 jenkins:2.60.3'''
       }
     }
 
