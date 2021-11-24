@@ -8,7 +8,7 @@ pipeline {
   stages {
     stage('Tomcat') {
       steps {
-        sh 'docker run -d -p 80:8080 7706ab5aafbf'
+        sh 'docker run -d -p 5000:8080 7706ab5aafbf'
       }
     }
 
